@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<!-- use $ to reference value from model  -->
+<p th:text="'Hello, ' + ${name} + '!'"/>
+<p></p>
+<!-- use # to reference value from property file -->
+<p th:text="#{msg.welcome}"/>
+
+Current time is <span th:text="${serverTime}"/>
+
+<table>
+    <tr th:each="student: ${students}">
+        <td th:text="${student.id}"/>
+        <td th:text="${student.name}"/>
+    </tr>
+</table>
+
+<form action="#" th:action="@{/saveStudent}" th:object="${student}" method="post">
+    <table border="1">
+        <tr>
+            <td><label th:text="#{msg.id}"/></td>
+            <td><input type="number" th:field="*{id}"/></td>
+        </tr>
+        <tr>
+            <td><label th:text="#{msg.name}"/></td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
